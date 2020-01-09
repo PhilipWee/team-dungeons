@@ -3,6 +3,7 @@ extends Sprite
 var radius = Vector2(16, 16)
 var boundary = 64
 var returnAcc = 20
+var threshold = 10
 
 var ongoingDrag = -1
 
@@ -33,3 +34,8 @@ func _input(event):
 			
 	if event is InputEventScreenTouch and !event.is_pressed() and event.get_index() == ongoingDrag:
 		ongoingDrag = -1
+		
+func getValue():
+	if getButtonPos().length()> threshold:
+		return getButtonPos().normalized()
+	return Vector2(0,0)

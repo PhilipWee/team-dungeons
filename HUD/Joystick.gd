@@ -11,7 +11,7 @@ func getButtonPos():
 	return $Button.position + radius
 
 func _ready():
-	pass
+	add_to_group("Control")
 
 func _process(delta):
 	if ongoingDrag == -1:

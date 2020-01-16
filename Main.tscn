@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Maps/MapMaker.tscn" type="PackedScene" id=2]
-[ext_resource path="res://HUD/MiniMap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://HUD/Menu Screen.tscn" type="PackedScene" id=4]
-[ext_resource path="res://HUD/Loading Screen.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,33 +11,3 @@ show_behind_parent = true
 z_index = -1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MiniMap" parent="CanvasLayer" instance=ExtResource( 3 )]
-visible = false
-margin_left = 523.852
-margin_top = 246.063
-margin_right = 623.852
-margin_bottom = 346.063
-
-[node name="Menu Screen" parent="." instance=ExtResource( 4 )]
-
-[node name="MarginContainer2" parent="Menu Screen" index="2"]
-anchor_right = 1.0
-margin_right = 346.0
-margin_bottom = 362.0
-
-[node name="VBoxContainer" parent="Menu Screen/MarginContainer2" index="0"]
-margin_top = 176.0
-margin_right = 296.0
-margin_bottom = 236.0
-
-[node name="New Game Button" parent="Menu Screen/MarginContainer2/VBoxContainer" index="0"]
-margin_right = 246.0
-
-[node name="Load Game Button" parent="Menu Screen/MarginContainer2/VBoxContainer" index="1"]
-margin_right = 246.0
-
-[node name="Loading Screen" parent="." instance=ExtResource( 5 )]
-[connection signal="pressed" from="Menu Screen/MarginContainer2/VBoxContainer/New Game Button" to="." method="_on_New_Game_Button_pressed"]
-
-[editable path="Menu Screen"]

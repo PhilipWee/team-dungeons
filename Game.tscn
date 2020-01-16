@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://HUD/Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://Main.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD/Menu Screen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD/Loading Screen.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -38,6 +40,7 @@ stretch = true
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer2"]
 size = Vector2( 140, 111 )
+transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
@@ -46,4 +49,17 @@ current = true
 zoom = Vector2( 10, 10 )
 script = ExtResource( 2 )
 
+[node name="Menu Screen" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+margin_right = 640.0
+margin_bottom = 360.0
+
+[node name="Loading Screen" parent="." instance=ExtResource( 5 )]
+visible = false
+margin_right = 640.0
+margin_bottom = 360.0
+[connection signal="pressed" from="Menu Screen/MarginContainer2/VBoxContainer/New Game Button" to="." method="_on_New_Game_Button_pressed"]
+
 [editable path="ViewportContainer/Viewport/Main"]
+
+[editable path="Menu Screen"]

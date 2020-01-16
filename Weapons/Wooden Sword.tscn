@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Weapons/Weapon Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/Wooden Sword.gd" type="Script" id=2]
+[ext_resource path="res://Weapons/Assets/16x16 Weapons Icons/Weapons/Sword - wooden.png" type="Texture" id=3]
+
+[node name="Wooden Sword" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+Damage = 25
+AttackSpeed = 1.0
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+offset = Vector2( 4, -3 )
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PoolVector2Array( 1, -1, 1, -3, 7, -10, 10, -10, 10, -7, 3, -1 )
+disabled = false

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Player Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Rogue.gd" type="Script" id=2]
+[ext_resource path="res://Weapons/Wooden Sword.tscn" type="PackedScene" id=3]
+
+[node name="Rogue" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+isAttacking = null
+isHurt = null
+Speed = 250
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, 10 )
+
+[node name="Sprite" parent="." index="1"]
+animation = "Idle"
+
+[node name="Attack Region" parent="Position2D" index="1"]
+visible = false
+
+[node name="Weapon" parent="Position2D" index="2"]
+position = Vector2( 20, 0 )
+
+[node name="Wooden Sword" parent="Position2D/Weapon" index="0" instance=ExtResource( 3 )]

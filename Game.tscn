@@ -50,11 +50,11 @@ zoom = Vector2( 10, 10 )
 script = ExtResource( 2 )
 
 [node name="Menu Screen" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 margin_right = 640.0
 margin_bottom = 360.0
 
 [node name="Loading Screen" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 visible = false
 margin_right = 640.0
 margin_bottom = 360.0
@@ -63,3 +63,5 @@ margin_bottom = 360.0
 [editable path="ViewportContainer/Viewport/Main"]
 
 [editable path="Menu Screen"]
+
+[editable path="Loading Screen"]

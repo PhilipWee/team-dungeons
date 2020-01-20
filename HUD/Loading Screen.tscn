@@ -36,5 +36,5 @@ texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 
 [node name="Load Timer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.02
 [connection signal="timeout" from="Load Timer" to="." method="_on_Load_Timer_timeout"]

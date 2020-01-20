@@ -6,7 +6,7 @@
 
 [node name="Wooden Sword" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-Damage = 25
+Damage = 100
 AttackSpeed = 1.0
 
 [node name="Sprite" parent="." index="0"]

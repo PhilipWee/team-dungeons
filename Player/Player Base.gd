@@ -7,13 +7,20 @@ var attackedDir = Vector2()
 var target = null
 
 export var Name: String
-export var Level: int
 export var Health: int
-export var Damage: int
 export var Speed: int
 
 onready var joystick = get_parent().get_node("CanvasLayer/HUD/Joystick")
-enum STATES{MOVE, HURT, ATTACK}
+enum STATES{IDLE, MOVE, HURT, ATTACK, DEATH}
+var currentState
+
+var Level = 1
+var EXP = 0
+var Gold = 0
+
+signal updateHealth
+signal updateEXP
+signal updateLevel
 
 
 func _ready():
@@ -21,7 +28,13 @@ func _ready():
 	isHurt = false
 	isAttacking = false
 	$Position2D/Weapon.hide()
-
+	var HUD = get_tree().get_nodes_in_group("HUD")[0]
+	connect("updateHealth", HUD, "updateHealth")
+	connect("updateEXP", HUD, "updateEXP")
+	connect("updateLevel", HUD, "updateLevel")
+	
+	
+	
 func _process(delta):
 	weaponHandler()
 	
@@ -143,7 +156,29 @@ func getHurt(dir, damage):
 		#isHurt = true
 		$AnimationPlayer.play("Hurt")
 		Health -= damage
-
+		emit_signal("updateHealth")
+		
+func calcEXP():
+	# Function calculates how much exp for level up
+	var req = floor(Level * exp(5))
+	return req
+	
+func canLvlUp():
+	# Function checks if plyer has levelledup
+	var req = calcEXP()
+	if EXP > req:
+		Level += 1
+		lvlUp(req)
+	else:
+		emit_signal("updateEXP", EXP, req)
+		
+func lvlUp(prevBound):
+	# Funcion levels the player up
+	var upperBound = calcEXP()
+	
+	EXP = EXP - prevBound
+	emit_signal("updateEXP", EXP, upperBound)
+	emit_signal("updateLevel", Level)
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "Attack1":
@@ -169,4 +204,10 @@ func _on_Attack_Region_body_exited(body):
 func onCompleteAttack():
 	isAttacking = false
 	$Position2D/Weapon.hide()
+	
+func pickUp(_name, value, expValue):
+	#print ("I pick up %s gold and %s exp" %[value, expValue])
+	EXP += expValue
+	Gold += value 
+	canLvlUp()
 	

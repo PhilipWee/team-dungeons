@@ -13,7 +13,9 @@ zoom = Vector2( 20, 20 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="TileMap" type="TileMap" parent="YSort"]
+[node name="Navigation2D" type="Navigation2D" parent="YSort"]
+
+[node name="TileMap" type="TileMap" parent="YSort/Navigation2D"]
 show_behind_parent = true
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )

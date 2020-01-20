@@ -1,7 +1,7 @@
 extends Node2D
 
 var Room = preload("res://Maps/Room.tscn")
-onready var Map = $YSort/TileMap
+onready var Map = $YSort/Navigation2D/TileMap
 
 var startRoom = null
 var endRoom = null

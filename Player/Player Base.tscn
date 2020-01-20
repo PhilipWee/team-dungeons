@@ -9,7 +9,7 @@
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "Move",
+"name": "Attack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -19,7 +19,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "Attack",
+"name": "Move",
 "speed": 5.0
 } ]
 

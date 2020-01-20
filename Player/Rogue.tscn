@@ -8,7 +8,8 @@
 script = ExtResource( 2 )
 isAttacking = null
 isHurt = null
-Speed = 250
+Health = 100
+Speed = 200
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( 0, 10 )
